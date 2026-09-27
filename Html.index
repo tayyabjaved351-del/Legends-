@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Freshorts - Create Free Shorts from YouTube Links. Fast, Simple & Easy. Owner by Tayyab Rajpoot.">
+
+<meta name="theme-color" content="#080b18">
+
+<title>Freshorts - YouTube Link to Free Shorts</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    color:white;
+    background:
+    radial-gradient(circle at 20% 20%, #343cff55, transparent 30%),
+    radial-gradient(circle at 80% 30%, #ff00cc44, transparent 30%),
+    radial-gradient(circle at 50% 90%, #00d9ff33, transparent 35%),
+    linear-gradient(135deg,#050714,#0c1028,#080812);
+    overflow-x:hidden;
+}
+
+/* Background lights */
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    filter:blur(80px);
+    z-index:-1;
+}
+
+body::before{
+    background:#5b4cff;
+    top:-100px;
+    left:-100px;
+}
+
+body::after{
+    background:#ff0099;
+    right:-100px;
+    bottom:-100px;
+}
+
+/* Header */
+header{
+    text-align:center;
+    padding:45px 20px 20px;
+}
+
+.logo{
+    display:inline-block;
+    padding:12px 24px;
+    border:1px solid #ffffff30;
+    border-radius:30px;
+    background:#ffffff12;
+    backdrop-filter:blur(12px);
+    box-shadow:0 0 30px #6d5cff44;
+    font-size:18px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#7c7cff;
+}
+
+h1{
+    margin-top:28px;
+    font-size:45px;
+    line-height:1.1;
+    font-weight:800;
+}
+
+h1 span{
+    background:linear-gradient(90deg,#7c6cff,#00e5ff,#ff4fd8);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.subtitle{
+    margin:18px auto;
+    max-width:600px;
+    color:#c7c9dc;
+    font-size:17px;
+    line-height:1.6;
+}
+
+/* Main Card */
+.main{
+    width:92%;
+    max-width:650px;
+    margin:35px auto;
+}
+
+.card{
+    padding:32px;
+    border-radius:28px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.14);
+    backdrop-filter:blur(20px);
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.12);
+}
+
+.card-title{
+    text-align:center;
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.card-text{
+    text-align:center;
+    color:#aeb2c8;
+    margin-bottom:25px;
+}
+
+/* YouTube Icon */
+.youtube-icon{
+    width:70px;
+    height:50px;
+    margin:0 auto 20px;
+    border-radius:16px;
+    background:#ff0033;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:27px;
+    box-shadow:0 10px 35px #ff003355;
+}
+
+.input-box{
+    display:flex;
+    gap:10px;
+    background:#050714aa;
+    padding:8px;
+    border-radius:17px;
+    border:1px solid #ffffff18;
+}
+
+input{
+    flex:1;
+    min-width:0;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:white;
+    padding:14px;
+    font-size:15px;
+}
+
+input::placeholder{
+    color:#777b94;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+    padding:0 20px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#685cff,#a64dff);
+    box-shadow:0 8px 25px #6c5cff55;
+    transition:.25s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 35px #6c5cff88;
+}
+
+.note{
+    text-align:center;
+    margin-top:18px;
+    color:#8589a3;
+    font-size:13px;
+}
+
+/* Features */
+.features{
+    width:92%;
+    max-width:900px;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.feature{
+    padding:22px 15px;
+    text-align:center;
+    border-radius:20px;
+    background:#ffffff08;
+    border:1px solid #ffffff12;
+    backdrop-filter:blur(10px);
+}
+
+.feature-icon{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.feature h3{
+    font-size:16px;
+    margin-bottom:7px;
+}
+
+.feature p{
+    color:#9296ad;
+    font-size:13px;
+    line-height:1.5;
+}
+
+/* Footer */
+footer{
+    margin-top:55px;
+    padding:30px 20px;
+    text-align:center;
+    border-top:1px solid #ffffff12;
+    background:#03040bcc;
+}
+
+.owner{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:16px;
+}
+
+.owner span{
+    color:#9c8cff;
+}
+
+.whatsapp{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 20px;
+    border-radius:30px;
+    text-decoration:none;
+    color:white;
+    background:#25D366;
+    font-weight:bold;
+    box-shadow:0 8px 25px #25d36644;
+    transition:.25s;
+}
+
+.whatsapp:hover{
+    transform:translateY(-2px);
+}
+
+.wa-icon{
+    font-size:23px;
+}
+
+.copyright{
+    margin-top:18px;
+    color:#65697e;
+    font-size:12px;
+}
+
+/* Mobile */
+@media(max-width:650px){
+
+    h1{
+        font-size:34px;
+    }
+
+    .subtitle{
+        font-size:15px;
+    }
+
+    .card{
+        padding:23px 17px;
+    }
+
+    .input-box{
+        flex-direction:column;
+        background:#050714cc;
+    }
+
+    button{
+        height:50px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ✦ <span>FRESHORTS</span> ✦
+    </div>
+
+    <h1>
+        Turn YouTube Links<br>
+        Into <span>Free Shorts</span>
+    </h1>
+
+    <p class="subtitle">
+        Create Shorts from YouTube links quickly and easily.
+        Simple, fast and beautifully designed for creators.
+    </p>
+
+</header>
+
+<main class="main">
+
+    <div class="card">
+
+        <div class="youtube-icon">
+            ▶
+        </div>
+
+        <div class="card-title">
+            YouTube Link → Free Shorts
+        </div>
+
+        <div class="card-text">
+            Paste your YouTube video link below
+        </div>
+
+        <div class="input-box">
+
+            <input
+                type="url"
+                id="youtubeLink"
+                placeholder="Paste YouTube video link here..."
+            >
+
+            <button onclick="createShorts()">
+                Create Shorts
+            </button>
+
+        </div>
+
+        <div class="note">
+            ⚡ Fast • Simple • Creator Friendly
+        </div>
+
+    </div>
+
+</main>
+
+<section class="features">
+
+    <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <h3>Fast</h3>
+        <p>Quick and simple Shorts creation workflow.</p>
+    </div>
+
+    <div class="feature">
+        <div class="feature-icon">🎬</div>
+        <h3>Shorts Ready</h3>
+        <p>Made especially for short-form video creators.</p>
+    </div>
+
+    <div class="feature">
+        <div class="feature-icon">✨</div>
+        <h3>Easy to Use</h3>
+        <p>No complicated interface. Just paste your link.</p>
+    </div>
+
+</section>
+
+<footer>
+
+    <div class="owner">
+        Owner by <span>Tayyab Rajpoot</span>
+    </div>
+
+    <a
+        class="whatsapp"
+        href="https://wa.me/923041393918"
+        target="_blank"
+    >
+        <span class="wa-icon">☘</span>
+        WhatsApp: 0304 1393918
+    </a>
+
+    <div class="copyright">
+        © 2026 Freshorts. All Rights Reserved.
+    </div>
+
+</footer>
+
+<script>
+
+function createShorts(){
+
+    const link = document.getElementById("youtubeLink").value.trim();
+
+    if(!link){
+        alert("Please paste a YouTube link first.");
+        return;
+    }
+
+    if(!link.includes("youtube.com") && !link.includes("youtu.be")){
+        alert("Please enter a valid YouTube link.");
+        return;
+    }
+
+    alert("YouTube link received! Shorts creation is ready.");
+}
+
+</script>
+
+</body>
+</html>
